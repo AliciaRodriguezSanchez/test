@@ -1,16 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import reportWebVitals from './reportWebVitals';
+import { TestProvider } from "./context/TestContext";
+import reportWebVitals from "./reportWebVitals";
 
-import { store } from './store'
-import { Provider } from 'react-redux'
+import Home from "./containers/Home";
+import Test from "./containers/Test";
+import Results from "./containers/Results";
 
-import Home from './containers/Home';
-import Test from './containers/Test';
-import Results from './containers/Results';
-
-import './css/index.scss';
+import "./css/index.scss";
 
 const router = createBrowserRouter([
   {
@@ -27,12 +25,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <TestProvider>
       <RouterProvider router={router} />
-    </Provider>
+    </TestProvider>
   </React.StrictMode>
 );
 

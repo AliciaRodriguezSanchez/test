@@ -1,19 +1,30 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useTestContext } from "../context/TestContext";
 
-import '../css/Home.scss';
+import "../css/Home.scss";
 
 function Home() {
-  const testResponses = useSelector((state) => state.tests.test);
+  const {
+    state: { test },
+  } = useTestContext();
 
   return (
-    <div className='home'>
+    <div className="home">
       <div className="home-logo">
-        <img className='logo' alt='Blinklearning logo' src='assets/img/logo.png' />
+        <img
+          className="logo"
+          alt="Blinklearning logo"
+          src="assets/img/logo.png"
+        />
       </div>
       <div className="home-buttons">
-        <Link className='button' to={`/test`} disabled={testResponses.done}>Realizar prueba</Link>
-        <Link className='button' to={`/results`} disabled={!testResponses.done}>Ver resultados</Link>
+        <Link className="button" to={`/test`} disabled={test.done}>
+          Realizar prueba
+        </Link>
+        <Link className="button" to={`/results`} disabled={!test.done}>
+          Ver resultados
+        </Link>
       </div>
     </div>
   );
